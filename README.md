@@ -72,6 +72,38 @@ skills/direct-short-video/
 3. 确保智能体能读取同目录下的 `references/`、`data/` 和 `scripts/`。
 4. 没有文件能力时仍可生成对话成品，但不得声称已经保存文件。
 
+## 在 Claude / Codex 中使用
+
+**方式一：直接发给 AI 一行指令（最简单）**
+
+新开对话，把下面这段原样发给 Claude 或 Codex：
+
+```text
+请从 GitHub 仓库 https://github.com/Ford-Z15/direct-short-video-skill 获取 skills/direct-short-video 目录的全部文件到当前工作目录，阅读其中的 SKILL.md 并严格按照它作为「抖音短视频编导专家」技能与我协作。
+```
+
+AI 会自己完成下载和读取，之后直接用大白话提需求即可。
+
+**方式二：命令行安装（Claude Code 用户）**
+
+一行命令装到 Claude Code 技能目录：
+
+```bash
+git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git /tmp/dsv && cp -r /tmp/dsv/skills/direct-short-video ~/.claude/skills/ && rm -rf /tmp/dsv
+```
+
+Windows（PowerShell）：
+
+```powershell
+git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git $env:TEMP\dsv; Copy-Item -Recurse $env:TEMP\dsv\skills\direct-short-video $HOME\.claude\skills\; Remove-Item -Recurse $env:TEMP\dsv
+```
+
+装好后重启会话，技能自动生效。
+
+**方式三：手动安装**
+
+下载 Release 中的 `direct-short-video.skill` 或仓库 `skills/direct-short-video/` 文件夹，解压后放到宿主支持的技能目录，或将 `SKILL.md` 全文粘贴为自定义指令。
+
 ## 本地验证
 
 在 `skills/direct-short-video/` 目录运行：
