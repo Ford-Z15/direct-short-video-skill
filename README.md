@@ -89,7 +89,7 @@ AI 会自己完成下载和读取，之后直接用大白话提需求即可。
 一行命令装到 Claude Code 技能目录：
 
 ```bash
-git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git /tmp/dsv && cp -r /tmp/dsv/skills/direct-short-video ~/.claude/skills/ && rm -rf /tmp/dsv
+mkdir -p ~/.claude/skills && git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git /tmp/dsv && cp -r /tmp/dsv/skills/direct-short-video ~/.claude/skills/ && rm -rf /tmp/dsv
 ```
 
 Windows（PowerShell）：
