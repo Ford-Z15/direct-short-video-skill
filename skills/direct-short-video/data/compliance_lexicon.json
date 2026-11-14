@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0",
+  "reviewed_on": "2026-11-12",
+  "name": "短视频文案违禁与高风险词库",
+  "scope": "中国大陆商业宣传及抖音电商常见场景；用于初审，不等同于法律意见或平台终审",
+  "matching": "先做 Unicode NFKC 规范化，再进行字面命中；命中后必须结合行业、语境、证据和最新规则复核",
+  "sources": {
+    "AD_LAW": {
+      "title": "中华人民共和国广告法",
+      "url": "https://www.gov.cn/guoqing/2021-10/29/content_5647620.htm",
+      "publisher": "中国政府网"
+    },
+    "ABSOLUTE_GUIDE": {
+      "title": "广告绝对化用语执法指南",
+      "url": "https://www.hunan.gov.cn/zqt/zcsd/202303/t20230320_29282723.html",
+      "publisher": "市场监管总局公告（湖南省人民政府网站转载）"
+    },
+    "DY_ACCOUNT": {
+      "title": "抖音电商创作者账号管理规范",
+      "url": "https://school.jinritemai.com/doudian/web/article/aJbZMXV2C9db",
+      "publisher": "抖音电商学习中心",
+      "version_note": "页面载明 2025-12-18 最新修订并实施"
+    },
+    "DY_APPAREL": {
+      "title": "关于服饰类商品材质/功能宣传不符的专项治理公告",
+      "url": "https://school.jinritemai.com/doudian/wap/article/aJg3ge5C4754",
+      "publisher": "抖音电商学习中心",
+      "version_note": "2026-03-06 发布并生效"
+    },
+    "DY_FMCG": {
+      "title": "快消和食品家居虚假宣传规则白皮书",
+      "url": "https://school.jinritemai.com/doudian/web/articlev0/aJkzdMC7vUSV",
+      "publisher": "抖音电商学习中心",
+      "version_note": "2026-09-01 页面"
+    }
+  },
+  "groups": [
+    {
+      "id": "ABSOLUTE_SUPERLATIVE",
+      "category": "绝对化与最高级宣传",
+      "severity": "review",
+      "terms": ["国家级", "最高级", "最佳", "最好", "最优", "顶级", "极品", "全网第一品牌", "第一品牌", "全网第一", "行业第一", "全国第一", "销量第一", "排名第一", "全网最低", "史上最低", "独一无二", "无与伦比", "消费者首选", "首选品牌"],
+      "action": "商业推广语境下删除或改为具体事实；时间顺序、内部流程和真实法定分级等需结合指南判断，不机械拦截“第一步”等正常表达",
+      "source_ids": ["AD_LAW", "ABSOLUTE_GUIDE", "DY_ACCOUNT"]
+    },
+    {
+      "id": "GENERAL_GUARANTEE",
+      "category": "普遍效果与结果保证",
+      "severity": "review",
+      "terms": ["百分百有效", "100%有效", "保证有效", "绝对有效", "永久有效", "一次根治", "彻底根治", "立即见效", "立刻见效", "永不反弹", "无效退款", "包见效", "保证解决", "保证学会", "百分百学会", "人人都能赚", "保证过审"],
+      "action": "核查是否有无条件结果承诺；删除保证，改写实际服务内容、适用条件和个体差异",
+      "source_ids": ["AD_LAW", "DY_FMCG"]
+    },
+    {
+      "id": "AUTHORITY_QUALIFICATION",
+      "category": "权威、授权与资质",
+      "severity": "needs_evidence",
+      "terms": ["官方", "官方指定", "官方认证", "官方授权", "国家认证", "央视推荐", "专家推荐", "教授推荐", "权威机构认证", "特许", "授权", "专卖", "专营", "旗舰", "直营", "特许经营", "特许经销", "免税", "保税仓", "全球购", "专利产品", "专利方法"],
+      "action": "要求有效授权、认证、资质或专利证明，并核对主体、范围、期限；无法提供则删除",
+      "source_ids": ["AD_LAW", "DY_ACCOUNT"]
+    },
+    {
+      "id": "MEDICAL_HEALTH",
+      "category": "医疗、健康与疾病功效",
+      "severity": "block_in_promotion",
+      "terms": ["治愈率", "有效率", "药到病除", "包治百病", "治疗癌症", "抗癌", "消炎", "治疗高血压", "降血糖", "降血压", "治疗糖尿病", "改善过敏", "治疗失眠", "根治鼻炎", "根治脱发", "替代药物", "替代母乳", "安全无副作用", "无毒副作用"],
+      "action": "非合规医疗、药品、医疗器械广告不得涉及疾病治疗功能；相关专业广告也需另行核对审查要求，不能只换同义词",
+      "source_ids": ["AD_LAW"]
+    },
+    {
+      "id": "EDUCATION_TRAINING",
+      "category": "教育培训结果承诺",
+      "severity": "block_in_promotion",
+      "terms": ["保过", "包过", "签约保过", "保证升学", "保证通过", "100%通过", "百分百通过", "保证获得学位", "保证拿证", "保证提分", "保证提高成绩", "保证就业", "包就业", "命题人授课", "命题官授课", "考试机构内部渠道"],
+      "action": "删除升学、考试、学历、证书、提分、就业及培训效果的明示或暗示保证，并核查考试机构关系表述",
+      "source_ids": ["AD_LAW"]
+    },
+    {
+      "id": "INVESTMENT_RETURN",
+      "category": "投资、招商与收益承诺",
+      "severity": "block_in_promotion",
+      "terms": ["稳赚", "稳赚不赔", "保本", "无风险", "零风险", "保收益", "保证收益", "固定收益", "躺赚", "轻松暴富", "保本保息", "稳赚高收益", "无本万利"],
+      "action": "删除收益保证；招商等具有投资回报预期的广告还需合理提示风险及责任承担",
+      "source_ids": ["AD_LAW"]
+    },
+    {
+      "id": "REAL_ESTATE_RETURN",
+      "category": "房地产升值与位置误导",
+      "severity": "block_in_promotion",
+      "terms": ["保证升值", "稳升值", "保值升值", "投资回报保证", "买房稳赚", "分钟到地铁", "分钟到市中心", "分钟到学校"],
+      "action": "删除升值或投资回报承诺；不得以到达具体参照物所需时间表示项目位置，规划配套不得误导",
+      "source_ids": ["AD_LAW"]
+    },
+    {
+      "id": "PRICE_PROMOTION",
+      "category": "价格、库存与活动真实性",
+      "severity": "needs_evidence",
+      "terms": ["全网最低价", "史上最低价", "原价", "最后一天", "仅限今天", "仅剩一件", "仅剩最后一单", "限量秒杀", "免费领", "免费送", "零元购", "错过再无", "永久停售"],
+      "action": "核对真实价格、期限、库存、赠品和参与条件；虚假稀缺、虚构原价和虚假免费必须删除",
+      "source_ids": ["AD_LAW", "DY_FMCG"]
+    },
+    {
+      "id": "DATA_CLAIM",
+      "category": "数据、研究与证明材料",
+      "severity": "needs_evidence",
+      "terms": ["据统计", "研究表明", "科学证明", "实验证明", "数据显示", "销量冠军", "用户好评率", "复购率", "治愈率", "有效率", "提升率", "增长率"],
+      "action": "引证必须真实准确并核对出处、适用范围和有效期限；无法验证不得作为宣传证明",
+      "source_ids": ["AD_LAW"]
+    },
+    {
+      "id": "APPAREL_FUNCTION",
+      "category": "服饰材质与功能承诺",
+      "severity": "needs_evidence",
+      "terms": ["不跑绒", "不钻绒", "不掉色", "不起球", "不缩水", "不勾丝", "瘦腿", "减肥", "减脂", "减重", "掉秤", "丰胸", "美白"],
+      "action": "服饰带货场景按专项治理审查；材质与商品信息一致，功能宣传须有符合要求的有效证明，不扩展到无关内容机械拦截",
+      "source_ids": ["DY_APPAREL"]
+    },
+    {
+      "id": "OFF_PLATFORM_DEAL",
+      "category": "私下交易与不当导流",
+      "severity": "review",
+      "terms": ["加微信", "加V", "私下转账", "私下交易", "绕过平台", "站外付款", "线下打款", "第三方客户端"],
+      "action": "结合平台、账号位置和交易场景核查；不得诱导私下交易或进行平台禁止的导流",
+      "source_ids": ["DY_ACCOUNT"]
+    },
+    {
+      "id": "DISPARAGEMENT",
+      "category": "贬低竞品与他人",
+      "severity": "review",
+      "terms": ["吊打同行", "碾压同行", "同行都是骗子", "其他品牌都是垃圾", "别家都是假货", "全网最差", "行业最烂"],
+      "action": "删除无法证实的贬低和群体指控；对比只使用真实、同基准、可核实的信息",
+      "source_ids": ["AD_LAW"]
+    }
+  ]
+}
