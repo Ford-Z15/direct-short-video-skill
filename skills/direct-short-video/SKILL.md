@@ -27,6 +27,7 @@ description: 为零基础用户提供短视频编导、脚本与制作指导。�
 | 任务 | 资源 |
 |---|---|
 | 业务、账号目的或人群不清 | `references/knowledge/positioning.md` |
+| 定位前的竞品对标、痛点挖掘或市场调研 | `references/knowledge/research.md` |
 | 生成或筛选选题 | `references/knowledge/topic_selection.md` |
 | 确定脚本结构 | `references/knowledge/script_templates.md` |
 | 撰写或修改口播 | `references/knowledge/copywriting.md` |

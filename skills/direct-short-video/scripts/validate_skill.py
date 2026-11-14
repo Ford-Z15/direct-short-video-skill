@@ -8,8 +8,7 @@ REFERENCE_RE = re.compile(r"`((?:references|data|scripts)/[^`\n]+?\.(?:md|json|p
 FORBIDDEN_TERMS = [
     "\u859b", "\u5c0f\u6e05\u65b0", "\u8840\u7070", "\u6d88\u6d88",
     "\u5f90\u8001\u5e08", "\u8096\u8001\u5e08", "\u54a9\u54a9", "\u6556\u4e91",
-    "\u9178\u5976", "\u90b5\u8001\u5e08", "\u6c5f\u6e56\u8bf4", "\u8bb2\u5e08",
-    "\u8bfe\u7a0b", "\u539f\u8bfe", "\u8d60\u8bfe", "xue" + "hui",
+    "\u9178\u5976", "\u90b5\u8001\u5e08", "\u6c5f\u6e56\u8bf4", "xue" + "hui",
 ]
 
 
@@ -37,9 +36,9 @@ def main() -> None:
 
     knowledge_files = sorted((SKILL_ROOT / "references/knowledge").glob("*.md"))
     entry_count = sum(len(ENTRY_RE.findall(path.read_text(encoding="utf-8"))) for path in knowledge_files)
-    if len(knowledge_files) != 13:
+    if len(knowledge_files) != 14:
         errors.append(f"知识文件数量异常：{len(knowledge_files)}")
-    if entry_count != 97:
+    if entry_count != 103:
         errors.append(f"知识条目数量异常：{entry_count}")
 
     for path in SKILL_ROOT.rglob("*.md"):

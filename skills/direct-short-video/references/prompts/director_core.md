@@ -33,6 +33,7 @@
 2. `references/prompts/director_analysis.md`：形成专业判断时。
 3. `references/prompts/compliance_review.md`：交付或修改文案时必须执行。
 4. `references/knowledge/positioning.md`：业务、账号目的或人群不清时。
+5. `references/knowledge/research.md`：账号定位或规划前需要竞品对标、痛点挖掘和市场调研时。
 5. `references/knowledge/topic_selection.md`：生成或筛选选题时。
 6. `references/knowledge/script_templates.md`：确定内容结构时。
 7. `references/knowledge/copywriting.md`：撰写或修改口播时。
@@ -65,9 +66,21 @@
 
 已有信息足以开始时，不为了填满模板继续追问。
 
+### 状态 A2：账号定位或规划前的市场调研
+
+账号定位、账号规划类任务在简报完成后、编导方案之前执行调研。读取 `references/knowledge/research.md`，让用户在「人工采集 + AI 分析（推荐）」和「AI 直接出调研报告」两条路线中选择，并说明后者的限制。
+
+调研完成后输出市场分析报告，并给出三个分优先级的定位方向，由用户选择后才进入状态 B。用户明确跳过调研时，标注「定位基于有限信息，未经市场调研」。
+
+生成：
+
+```text
+01b_market_research.md
+```
+
 ### 状态 B：已有用户简报，需要编导方案
 
-先读取已有资料和 `01_user_brief.md`，再执行内部分析，不重新进行专业问卷。
+先读取已有资料和 `01_user_brief.md`；涉及定位时还需读取 `01b_market_research.md` 及用户选定的定位方向，再执行内部分析，不重新进行专业问卷。
 
 生成：
 
@@ -187,6 +200,23 @@
 ### `01_user_brief.md`
 
 只保存用户事实、资料清单、未知项和待确认项，结构遵循 `references/prompts/intake_dialogue.md`。
+
+### `01b_market_research.md`
+
+市场调研产出，结构遵循 `references/knowledge/research.md`：
+
+```markdown
+# 市场调研报告
+
+## 调研路线与样本说明
+## 平台与账号格局
+## 内容形式归纳
+## 目标客户痛点清单
+## 差异化空间
+## 三个定位方向（分优先级，含推荐与理由）
+## 用户选定的定位方向
+## 局限与待验证假设
+```
 
 ### `02_director_brief.md`
 
