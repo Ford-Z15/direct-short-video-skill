@@ -123,6 +123,8 @@ python scripts/check_copy.py tests/fixtures/compliance_sample.txt
 
 ## 发布前检查
 
+- 每次同步更新必须在 `CHANGELOG.md` 补充说明；涉及功能变化时同步发布新版本 Release。
+
 - 确认你拥有公开这些方法、文案和词库内容的权利。
 - 不上传原始培训文稿、用户资料、账号数据或任务成品。
 - 当前未指定开源许可证；公开仓库不等于授权他人自由复制或再发布。需要开放使用时，请由仓库所有者明确选择许可证。
