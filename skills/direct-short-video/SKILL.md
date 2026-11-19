@@ -17,10 +17,11 @@ description: 为零基础用户提供短视频编导、脚本与制作指导。�
 1. 信息不足时读取 `references/prompts/intake_dialogue.md`，每次最多问两个用户能够回答的事实问题。
 2. 形成专业判断时读取 `references/prompts/director_analysis.md`，区分用户确认、资料事实和编导假设。
 3. 按任务读取下方方法文件，完成选题、结构、口播、分镜和制作要求。
-4. 每次任务保存到交付根目录的 `outputs/<项目名>/<任务名>/`，不覆盖历史任务。
-5. 对话中先展示可直接使用的成品，再提供完整文件位置；文件不可写时给出完整成品，不声称已保存。
-6. 交付或修改文案前必须读取并执行 `references/prompts/compliance_review.md`。
-7. 用户交付物不展示内部出处、文稿编号、案例来源或检索过程。
+4. 涉及调研报告、定位方向、分镜或最终拍摄计划时，读取并执行 `references/prompts/visual_delivery.md`：调研与拍摄计划调用可用的 PPT／演示文稿 Skill 生成可视化演示；定位方向用代码生成素描卡；分镜默认逐镜生成“左侧完整文字表、右侧同镜素描”的标准时间轴单元，移动端改为上文下图，不调用视频模型。
+5. 每次任务保存到交付根目录的 `outputs/<项目名>/<任务名>/`，不覆盖历史任务。
+6. 对话中先展示可直接使用的成品，再提供完整文件位置；文件不可写时给出完整成品，不声称已保存。
+7. 交付或修改文案前必须读取并执行 `references/prompts/compliance_review.md`。
+8. 用户交付物不展示内部出处、文稿编号、案例来源或检索过程。
 
 ## 按需读取方法
 
@@ -28,7 +29,8 @@ description: 为零基础用户提供短视频编导、脚本与制作指导。�
 |---|---|
 | 业务、账号目的或人群不清 | `references/knowledge/positioning.md` |
 | 定位前的竞品对标、痛点挖掘或市场调研 | `references/knowledge/research.md` |
-| 生成或筛选选题 | `references/knowledge/topic_selection.md` |
+| 生成或筛选选题、设计差异化表达 | `references/knowledge/topic_selection.md` |
+| 设计钩子、开篇或检查正文兑现 | `references/knowledge/hooks.md` |
 | 确定脚本结构 | `references/knowledge/script_templates.md` |
 | 撰写或修改口播 | `references/knowledge/copywriting.md` |
 | 设计分镜与信息画面 | `references/knowledge/storyboarding.md` |

@@ -34,19 +34,20 @@
 3. `references/prompts/compliance_review.md`：交付或修改文案时必须执行。
 4. `references/knowledge/positioning.md`：业务、账号目的或人群不清时。
 5. `references/knowledge/research.md`：账号定位或规划前需要竞品对标、痛点挖掘和市场调研时。
-5. `references/knowledge/topic_selection.md`：生成或筛选选题时。
-6. `references/knowledge/script_templates.md`：确定内容结构时。
-7. `references/knowledge/copywriting.md`：撰写或修改口播时。
-8. `references/knowledge/storyboarding.md`：设计分镜、信息画面或配音画面时。
-9. `references/knowledge/filming.md`：补充景别、构图、运镜、光线与设备要求时。
-10. `references/knowledge/editing.md`：制作字幕、音乐、音量、画幅和导出要求时。
-11. `references/knowledge/editing_advanced.md`：需要插图、音效、调色、蒙版、动画或关键帧时。
-12. `references/knowledge/publishing.md`：提供发布文案、话题、封面或账号运营建议时。
-13. `references/knowledge/sales_scripts.md`：撰写产品或服务销售脚本时。
-14. `references/knowledge/platform_operations.md`：复盘平台数据、查询规则或处理账号异常时。
-15. `references/knowledge/paid_promotion.md`：用户主动需要付费投放方案或复盘时。
-16. `references/knowledge/live_commerce.md`：用户主动需要直播策划、选品或直播话术时。
-17. 用户简报、业务资料、账号作品及本次提供的参考材料。
+6. `references/knowledge/topic_selection.md`：生成或筛选选题时。
+7. `references/knowledge/hooks.md`：设计钩子、开篇或检查正文兑现时。
+8. `references/knowledge/script_templates.md`：确定内容结构时。
+9. `references/knowledge/copywriting.md`：撰写或修改口播时。
+10. `references/knowledge/storyboarding.md`：设计分镜、信息画面或配音画面时。
+11. `references/knowledge/filming.md`：补充景别、构图、运镜、光线与设备要求时。
+12. `references/knowledge/editing.md`：制作字幕、音乐、音量、画幅和导出要求时。
+13. `references/knowledge/editing_advanced.md`：需要插图、音效、调色、蒙版、动画或关键帧时。
+14. `references/knowledge/publishing.md`：提供发布文案、话题、封面或账号运营建议时。
+15. `references/knowledge/sales_scripts.md`：撰写产品或服务销售脚本时。
+16. `references/knowledge/platform_operations.md`：复盘平台数据、查询规则或处理账号异常时。
+17. `references/knowledge/paid_promotion.md`：用户主动需要付费投放方案或复盘时。
+18. `references/knowledge/live_commerce.md`：用户主动需要直播策划、选品或直播话术时。
+19. 用户简报、业务资料、账号作品及本次提供的参考材料。
 
 只有知识文件中的内容才能称为“方法库方法”。通用补充、事实核查、安全与合规边界要明确标注为系统规则，不冒充特定来源原话。
 
@@ -84,17 +85,19 @@
 
 账号定位、账号规划类任务在简报完成后、编导方案之前执行调研。读取 `references/knowledge/research.md`，让用户在「人工采集 + AI 分析（推荐）」和「AI 直接出调研报告」两条路线中选择，并说明后者的限制。
 
-调研完成后输出市场分析报告，并给出三个分优先级的定位方向，由用户选择后才进入状态 B。用户明确跳过调研时，标注「定位基于有限信息，未经市场调研」。
+调研完成后输出市场分析报告，并给出三个分优先级的定位方向，由用户选择后才进入状态 B。读取 `references/prompts/visual_delivery.md`，调用可用的 PPT／演示文稿 Skill 制作调研演示，并用代码为三个定位方向各画一张场景素描卡；不得调用视频模型。用户明确跳过调研时，标注「定位基于有限信息，未经市场调研」。
 
 生成：
 
 ```text
 01b_market_research.md
+01b_market_research.html
+02a_positioning_sketches/
 ```
 
 ### 状态 B：已有用户简报，需要编导方案
 
-先读取已有资料和 `01_user_brief.md`；涉及定位时还需读取 `01b_market_research.md` 及用户选定的定位方向，再执行内部分析，不重新进行专业问卷。
+先读取已有资料和 `01_user_brief.md`；涉及定位时还需读取 `01b_market_research.md`、定位素描卡及用户选定的定位方向，再执行内部分析，不重新进行专业问卷。
 
 生成：
 
@@ -163,28 +166,37 @@
 
 每个候选写清：对话人群、与业务的关系、真实素材依据、使用的方法、拍摄可行性和风险。优先选择有真实材料且用户能拍的题目。
 
-### 第四步：选择脚本结构
+表达形式常见、缺乏辨识度时，按选题方法中的五类元素叠加发散：保留业务基本盘，从道具、身份、行为、视角、场景中选择一到两个自然成立的元素。输出具体组合、服务的人群、趣味点、事实依据、拍法和风险；不得为了反差编造身份、效果或经历，也不得用无关流量替代业务目标。
 
-根据内容实际形态选择知识、热点、手艺过程或观点类模板，记录选择理由。
+### 第四步：设计钩子并选择类型结构
+
+先读取 `references/knowledge/hooks.md`，分别写出目标人群、具体场景和观看理由，生成少量不同机制的候选钩子，并确定首个画面与正文兑现段落。只有主题句而没有观看理由时，不得进入完整口播。
+
+再根据内容实际形态选择知识、热点、手艺过程、观点或销售类模板，记录选择理由。
 
 - 知识类：问题、方法、推荐、盘点或避坑素材是否完整。
 - 热点类：事件是否真实且仍具讨论价值；事实和观点是否分开；目标观众是否关心。
 - 手艺过程类：是否有可拍摄的关键动作、变化和结果。
 - 观点类：是否保持同一写作对象和一致立场；观点是否符合用户真实价值观。
+- 销售类：人群、场景、产品／服务、可证明卖点与真实行动方式是否完整。
 
-模板可按素材删减，不为填满结构添加废话。未覆盖的内容类型使用通用编导方法，并明确标注。
+按 `references/knowledge/script_templates.md` 填写结构卡，明确各段功能、真实素材和表达形式。钩子承诺的数量、方法或对比必须由正文逐项兑现。模板可按素材删减，不为填满结构添加废话；未覆盖的内容类型使用通用编导方法，并明确标注。
 
 ### 第五步：写口播和画面
 
-先用简单结构表达，再使用描述、类比、对比和口语化修改。文案必须符合出镜者真实说话方式。销售内容还要读取 `references/knowledge/sales_scripts.md`，围绕真实人群、使用场景、可证明卖点和交易条件组织表达，不虚构体验、优惠、库存、质疑或产品效果。
+先按结构卡写口播，再使用描述、类比、对比和口语化修改。逐句标注其功能；每句话至少承担钩子、问题、方法、证据、示例、推进、收束或行动中的一项，重复和空泛句删除或合并。文案必须符合出镜者真实说话方式。销售内容还要读取 `references/knowledge/sales_scripts.md`，围绕真实人群、使用场景、可证明卖点和交易条件组织表达，不虚构体验、优惠、库存、质疑或产品效果。
 
 读取 `references/knowledge/storyboarding.md`，按自然段拆分真人口述、写实镜头、信息画面和写意镜头。每个镜头都要承担解释、证明、推进过程或表达情绪的任务，并根据用户设备、场地、人员、素材和剪辑能力安排。历史资料、重演和示意画面必须明确标注；没有真实素材时写“待拍摄”或“待用户提供”。
+
+分镜表确认后，读取 `references/prompts/visual_delivery.md`，生成 `03_timeline_script.html`：每个镜头一个独立时间轴单元，桌面端左侧为完整文字表、右侧为同镜 9:16 辅助素描，移动端改为上文下图；再用代码生成逐镜素描与总览，保存到 `03b_storyboard_sketches/`。不得退回纯横向六列宽表或以素描总览替代表格，不得省略完整台词；不得调用视频模型或只画少量装饰图代替逐镜分镜。实际检查桌面左右结构、手机上下结构、打印视图及素描渲染结果后再交付。
 
 读取 `references/knowledge/filming.md`，按表达需要补充景别、构图、运镜、光线和曝光提示。优先固定机位和现有设备，运镜必须能安全完成，镜头长度以看清和理解为准。
 
 读取 `references/knowledge/editing.md`，根据用户使用的软件和实际能力输出最小可执行的剪辑步骤。优先保证画幅正确、字幕准确可读、人声清晰、音乐不干扰表达，并检查音乐与其他素材的版权或授权。字幕、标题、贴纸和发布文案统一执行 `references/prompts/compliance_review.md`，导出后安排手机端完整预览。
 
 确需插图、音效、调色、蒙版、动画或关键帧时，再读取 `references/knowledge/editing_advanced.md`。每项效果必须对应解释、证明、转场、隐私处理或情绪表达任务，不把全部进阶功能堆进同一条视频。新增素材要核查事实、肖像、隐私与授权，调色不得改变商品真实效果，处理后再次预览和审查。
+
+最终拍摄计划确认后，按 `references/prompts/visual_delivery.md` 调用可用的 PPT／演示文稿 Skill，生成 `07_shooting_plan.md` 和浏览器直接打开的 `07_shooting_plan.html`，包含人员设备、拍摄顺序、镜头安排、安全与隐私边界、收工检查。实际验证演示后再交付。
 
 用户需要发布建议时，读取 `references/knowledge/publishing.md`，补充与内容一致的发布文案、少量相关话题和封面要求。热点、平台入口及规则必须按当前官方信息核验；不能用空镜播放量测试账号权重，也不能把运营技巧描述为流量保证。
 
@@ -246,10 +258,15 @@
 ## 本条任务
 ## 对话人群
 ## 选题与选择理由
+## 钩子设计与兑现
+| 钩子原文 | 主机制 | 人群与场景 | 观看理由 | 首个画面 | 正文兑现段落 |
 ## 采用结构
+| 段落 | 功能 | 真实素材 | 表达形式 |
 ## 完整口播
+## 逐句功能检查
+| 句子 | 功能 | 保留／修改／删除 |
 ## 分镜与画面
-| 顺序 | 画面／动作 | 口播／字幕 | 拍摄提示 |
+| 镜号／时间轴 | 画面描述／构图参考 | 台词／口播 | 情绪／语气 | 景别／机位／运镜 | 字幕／剪辑 | 事实与拍摄备注 |
 ## 剪辑与导出要求
 ## 发布文案、话题与封面（用户需要时）
 ## 事实依据与待确认项
@@ -258,7 +275,7 @@
 ## 自审结果
 ```
 
-不需要的部分可省略，不生成空白凑数。分镜必须能对应口播和实际拍摄条件。
+不需要的部分可省略，不生成空白凑数。分镜必须能对应完整口播和实际拍摄条件；默认可视化成品为 `03_timeline_script.html`，代码素描仅作画面辅助。
 
 ### `04_review.md`
 
