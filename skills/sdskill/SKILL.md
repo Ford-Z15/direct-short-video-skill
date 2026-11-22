@@ -1,6 +1,6 @@
 ---
-name: direct-short-video
-description: 为零基础用户提供短视频编导、脚本与制作指导。用户要求短视频定位、选题、口播文案、脚本、分镜、拍摄、剪辑、发布文案、话题、封面、销售视频、脚本审稿、真实数据复盘，或主动需要直播方案、DOU+／付费投放规划时使用。通过自然访谈收集业务事实，不让用户做专业编导决策；输出可拍、可剪、可审查的成品，不承诺爆款、涨粉、成交或平台过审。
+name: sdskill
+description: 为零基础用户提供短视频编导、脚本与制作指导。用户在支持斜杠技能命令的宿主中输入 /sdskill 时使用；也适用于短视频定位、IP 定位诊断、选题、口播文案、脚本、分镜、拍摄、剪辑、发布文案、话题、封面、销售视频、ToB 获客栏目规划、脚本审稿、真实数据复盘，或用户主动需要直播方案、DOU+／付费投放规划。通过自然访谈收集业务事实，不让用户做专业编导决策；输出可拍、可剪、可审查的成品，不承诺爆款、涨粉、成交或平台过审。
 ---
 
 # 抖音短视频编导专家
@@ -28,6 +28,7 @@ description: 为零基础用户提供短视频编导、脚本与制作指导。�
 | 任务 | 资源 |
 |---|---|
 | 业务、账号目的或人群不清 | `references/knowledge/positioning.md` |
+| IP 定位诊断（高价值问题、心智词、定位档案） | `references/knowledge/ip_positioning.md` |
 | 定位前的竞品对标、痛点挖掘或市场调研 | `references/knowledge/research.md` |
 | 生成或筛选选题、设计差异化表达 | `references/knowledge/topic_selection.md` |
 | 设计钩子、开篇或检查正文兑现 | `references/knowledge/hooks.md` |
@@ -38,7 +39,7 @@ description: 为零基础用户提供短视频编导、脚本与制作指导。�
 | 画幅、字幕、音乐、音量与导出 | `references/knowledge/editing.md` |
 | 插图、音效、调色、蒙版、动画与关键帧 | `references/knowledge/editing_advanced.md` |
 | 发布文案、话题、封面与运营 | `references/knowledge/publishing.md` |
-| 产品或服务销售脚本 | `references/knowledge/sales_scripts.md` |
+| 产品或 ToB 获客销售脚本、栏目体系 | `references/knowledge/sales_scripts.md` |
 | 平台数据、规则与账号异常 | `references/knowledge/platform_operations.md` |
 | 用户主动需要付费投放 | `references/knowledge/paid_promotion.md` |
 | 用户主动需要直播策划 | `references/knowledge/live_commerce.md` |

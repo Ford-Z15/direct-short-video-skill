@@ -1,10 +1,10 @@
-# 抖音短视频编导专家
+# 抖音短视频编导专家（sdskill）
 
 一个面向零基础用户的短视频编导 Agent Skill。收集业务事实后，由智能体完成定位、选题、口播、分镜、拍摄、剪辑、发布与风险审查，并支持销售脚本、直播和付费投放规划。
 
 ## 背景
 
-本 Skill 的方法体系基于国内头部短视频博主培训课程提炼打造，覆盖从市场调研、账号定位、选题策划、脚本写作、分镜设计到拍摄剪辑、发布运营和风险审查的完整编导链路，共 15 个方法模块、117 条可执行方法。你不需要懂编导术语，智能体会把专业判断做完，你只需要回答关于自己业务的事实问题。
+本 Skill 的方法体系基于国内头部短视频博主培训课程提炼打造，覆盖从市场调研、账号定位、选题策划、脚本写作、分镜设计到拍摄剪辑、发布运营和风险审查的完整编导链路，共 16 个方法模块、120 条可执行方法。你不需要懂编导术语，智能体会把专业判断做完，你只需要回答关于自己业务的事实问题。
 
 ## 工作流程
 
@@ -41,11 +41,11 @@ flowchart TD
 ## 仓库内容
 
 ```text
-skills/direct-short-video/
-├── SKILL.md                  # 触发说明与执行入口
+skills/sdskill/
+├── SKILL.md                  # 触发说明与执行入口，调用名 /sdskill
 ├── references/
 │   ├── prompts/              # 访谈、分析、主流程与合规审查
-│   └── knowledge/            # 15 个按需读取的方法模块，117 条方法
+│   └── knowledge/            # 16 个按需读取的方法模块，120 条方法
 ├── scripts/
 │   ├── check_copy.py         # 文案风险词初筛
 │   └── validate_skill.py     # Skill 完整性校验
@@ -57,11 +57,13 @@ skills/direct-short-video/
 
 ## 安装为 Agent Skill
 
-将整个 `skills/direct-short-video/` 文件夹复制到宿主使用的 Skills 目录，或导入发布包中的 `direct-short-video.skill`。不同宿主的目录和导入入口可能不同，以对应版本的说明为准。
+将整个 `skills/sdskill/` 文件夹复制到宿主使用的 Skills 目录，或导入发布包中的 `sdskill.skill`。不同宿主的目录和导入入口可能不同，以对应版本的说明为准。
+
+在 Kimi Work 等支持斜杠技能命令的宿主中，安装后新开对话输入 `/sdskill` 即可调用；当前会话若未刷新技能索引，请重启或新开对话。
 
 安装后可直接提出：
 
-- “帮我为一家社区宠物店写第一条视频，只能用手机拍。”
+- `/sdskill 帮我为一家社区宠物店写第一条视频，只能用手机拍。`
 - “把这段口播改得自然一些，并补上分镜和剪辑要求。”
 - “根据这些真实后台数据，帮我复盘下一条应该怎么改。”
 
@@ -71,7 +73,7 @@ skills/direct-short-video/
 
 如果当前版本不支持技能导入：
 
-1. 将 `direct-short-video/` 文件夹完整复制到工作目录。
+1. 将 `sdskill/` 文件夹完整复制到工作目录。
 2. 把 `SKILL.md` 的内容放入智能体自定义指令，或作为新对话的首条指令。
 3. 确保智能体能读取同目录下的 `references/`、`data/` 和 `scripts/`。
 4. 没有文件能力时仍可生成对话成品，但不得声称已经保存文件。
@@ -83,7 +85,7 @@ skills/direct-short-video/
 新开对话，把下面这段原样发给 Claude 或 Codex：
 
 ```text
-请从 GitHub 仓库 https://github.com/Ford-Z15/direct-short-video-skill 获取 skills/direct-short-video 目录的全部文件到当前工作目录，阅读其中的 SKILL.md 并严格按照它作为「抖音短视频编导专家」技能与我协作。
+请从 GitHub 仓库 https://github.com/Ford-Z15/direct-short-video-skill 获取 skills/sdskill 目录的全部文件到当前工作目录，阅读其中的 SKILL.md 并严格按照它作为「抖音短视频编导专家」（调用名 /sdskill）技能与我协作。
 ```
 
 AI 会自己完成下载和读取，之后直接用大白话提需求即可。
@@ -93,24 +95,24 @@ AI 会自己完成下载和读取，之后直接用大白话提需求即可。
 一行命令装到 Claude Code 技能目录：
 
 ```bash
-mkdir -p ~/.claude/skills && git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git /tmp/dsv && cp -r /tmp/dsv/skills/direct-short-video ~/.claude/skills/ && rm -rf /tmp/dsv
+mkdir -p ~/.claude/skills && git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git /tmp/dsv && cp -r /tmp/dsv/skills/sdskill ~/.claude/skills/ && rm -rf /tmp/dsv
 ```
 
 Windows（PowerShell）：
 
 ```powershell
-git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git $env:TEMP\dsv; Copy-Item -Recurse $env:TEMP\dsv\skills\direct-short-video $HOME\.claude\skills\; Remove-Item -Recurse $env:TEMP\dsv
+git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git $env:TEMP\dsv; Copy-Item -Recurse $env:TEMP\dsv\skills\sdskill $HOME\.claude\skills\; Remove-Item -Recurse $env:TEMP\dsv
 ```
 
 装好后重启会话，技能自动生效。
 
 **方式三：手动安装**
 
-下载 Release 中的 `direct-short-video.skill` 或仓库 `skills/direct-short-video/` 文件夹，解压后放到宿主支持的技能目录，或将 `SKILL.md` 全文粘贴为自定义指令。
+下载 Release 中的 `sdskill.skill` 或仓库 `skills/sdskill/` 文件夹，解压后放到宿主支持的技能目录，或将 `SKILL.md` 全文粘贴为自定义指令。
 
 ## 本地验证
 
-在 `skills/direct-short-video/` 目录运行：
+在 `skills/sdskill/` 目录运行：
 
 ```bash
 python scripts/validate_skill.py
