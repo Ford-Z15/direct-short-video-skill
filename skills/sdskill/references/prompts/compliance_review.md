@@ -22,7 +22,7 @@
 
 ### 第一步：运行词库初筛
 
-读取 `data/compliance_lexicon.json`，对待交付文案进行字面初筛。宿主可运行 Python 时，在项目根目录执行 `python scripts/check_copy.py "<待检查文案文件>"`；不能运行时直接按 JSON 词条逐项检查。
+读取 `data/compliance_lexicon.json`，对待交付文案进行字面初筛。当前 AI 工具可运行 Python 时，在项目根目录执行 `python scripts/check_copy.py "<待检查文案文件>"`；不能运行时直接按 JSON 词条逐项检查。
 
 词库说明和维护规则见 `data/compliance_lexicon.md`。命中只表示需要复核，未命中不等于合规；不得省略后续语义审查。
 

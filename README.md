@@ -27,12 +27,12 @@ flowchart TD
 
 | 阶段 | 你会看到什么 | 怎么生成 |
 |---|---|---|
-| 市场调研 | 浏览器可翻页的调研报告 | 调用宿主可用的 PPT Skill；不可用时明确说明并生成单文件 HTML |
+| 市场调研 | 浏览器可翻页的调研报告 | 调用你可用的 PPT Skill；不可用时明确说明并生成单文件 HTML |
 | 定位方向 | 三个方向各一张场景素描卡 | 代码绘制，体现人物、场景与内容重心差异 |
 | 分镜脚本 | 每镜左侧文字表、右侧构图素描，含完整台词、情绪、景别运镜与剪辑 | 优先生成静态 HTML 表格，再用代码逐镜绘制构图，不调用视频模型 |
-| 最终拍摄计划 | 可翻页的执行演示 | 调用宿主可用的 PPT Skill，包含安全与收工检查 |
+| 最终拍摄计划 | 可翻页的执行演示 | 调用你可用的 PPT Skill，包含安全与收工检查 |
 
-可视化文件保存在当前任务目录，对话中先展示成品。示意图只帮助理解，不会伪造客户现场或效果数据；宿主没有文件能力时会明确说明限制。
+可视化文件保存在当前任务目录，对话中先展示成品。示意图只帮助理解，不会伪造客户现场或效果数据；你的工具没有文件能力时会明确说明限制。
 
 > 说明：违禁词初筛不能替代你最终确认平台规则；没有真实数据时，智能体不会承诺播放量或成交效果。
 
@@ -57,9 +57,9 @@ skills/sdskill/
 
 ## 安装为 Agent Skill
 
-将整个 `skills/sdskill/` 文件夹复制到宿主使用的 Skills 目录，或导入发布包中的 `sdskill.skill`。不同宿主的目录和导入入口可能不同，以对应版本的说明为准。
+将整个 `skills/sdskill/` 文件夹复制到你使用的 AI 工具的 Skills 目录，或导入发布包中的 `sdskill.skill`。不同工具的目录和导入入口可能不同，以对应版本的说明为准。
 
-在 Kimi Work 等支持斜杠技能命令的宿主中，安装后新开对话输入 `/sdskill` 即可调用；当前会话若未刷新技能索引，请重启或新开对话。
+在 Kimi Work 等支持斜杠技能命令的 AI 工具中，安装后新开对话输入 `/sdskill` 即可调用；当前会话若未刷新技能索引，请重启或新开对话。
 
 安装后可直接提出：
 
@@ -85,7 +85,7 @@ skills/sdskill/
 新开对话，把下面这段原样发给 Claude 或 Codex：
 
 ```text
-请从 GitHub 仓库 https://github.com/Ford-Z15/direct-short-video-skill 获取 skills/sdskill 目录的全部文件到当前工作目录，阅读其中的 SKILL.md 并严格按照它作为「抖音短视频编导专家」（调用名 /sdskill）技能与我协作。
+请从 GitHub 仓库 https://github.com/Ford-Z15/sdskill 获取 skills/sdskill 目录的全部文件到当前工作目录，阅读其中的 SKILL.md 并严格按照它作为「抖音短视频编导专家」（调用名 /sdskill）技能与我协作。
 ```
 
 AI 会自己完成下载和读取，之后直接用大白话提需求即可。
@@ -95,20 +95,20 @@ AI 会自己完成下载和读取，之后直接用大白话提需求即可。
 一行命令装到 Claude Code 技能目录：
 
 ```bash
-mkdir -p ~/.claude/skills && git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git /tmp/dsv && cp -r /tmp/dsv/skills/sdskill ~/.claude/skills/ && rm -rf /tmp/dsv
+mkdir -p ~/.claude/skills && git clone --depth 1 https://github.com/Ford-Z15/sdskill.git /tmp/dsv && cp -r /tmp/dsv/skills/sdskill ~/.claude/skills/ && rm -rf /tmp/dsv
 ```
 
 Windows（PowerShell）：
 
 ```powershell
-git clone --depth 1 https://github.com/Ford-Z15/direct-short-video-skill.git $env:TEMP\dsv; Copy-Item -Recurse $env:TEMP\dsv\skills\sdskill $HOME\.claude\skills\; Remove-Item -Recurse $env:TEMP\dsv
+git clone --depth 1 https://github.com/Ford-Z15/sdskill.git $env:TEMP\dsv; Copy-Item -Recurse $env:TEMP\dsv\skills\sdskill $HOME\.claude\skills\; Remove-Item -Recurse $env:TEMP\dsv
 ```
 
 装好后重启会话，技能自动生效。
 
 **方式三：手动安装**
 
-下载 Release 中的 `sdskill.skill` 或仓库 `skills/sdskill/` 文件夹，解压后放到宿主支持的技能目录，或将 `SKILL.md` 全文粘贴为自定义指令。
+下载 Release 中的 `sdskill.skill` 或仓库 `skills/sdskill/` 文件夹，解压后放到你使用的 AI 工具支持的技能目录，或将 `SKILL.md` 全文粘贴为自定义指令。
 
 ## 本地验证
 
