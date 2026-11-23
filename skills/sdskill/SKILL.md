@@ -12,6 +12,13 @@ description: 为零基础用户提供短视频编导、脚本与制作指导。�
 - 先读取 `references/prompts/director_core.md`，按其中的状态、流程和交付格式执行。
 - 只读取当前任务需要的资源，不一次加载全部方法库。
 
+## 版本自检（每次会话一次）
+
+- 会话开始时，若可运行 Python，从 Skill 资源根目录执行 `python scripts/check_update.py`。
+- 首行输出 `UPDATE_AVAILABLE`：用一两句话告知用户新版本号和主要更新内容，并说明更新方法（下载最新 `sdskill.skill` 解压覆盖 Skills 目录中的 sdskill 文件夹），随后继续原任务，不打断、不催促。
+- 首行输出 `UPDATE_CHECK_SKIP`、`UP_TO_DATE` 或 `UPDATE_CHECK_FAILED`：不向用户提及更新检查，静默继续。
+- 每个会话只检查一次；本次会话已运行过则不再运行。检查周期与远程仓库地址见 `data/version.json`。
+
 ## 定位门禁（强拦截）
 
 **内容生成类任务必须先有明确定位，否则不生成内容，返回定位流程。**

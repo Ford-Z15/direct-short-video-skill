@@ -48,8 +48,9 @@ skills/sdskill/
 │   └── knowledge/            # 16 个按需读取的方法模块，120 条方法
 ├── scripts/
 │   ├── check_copy.py         # 文案风险词初筛
+│   ├── check_update.py       # 版本自检（对比 GitHub 最新 Release）
 │   └── validate_skill.py     # Skill 完整性校验
-├── data/                     # 风险词库与维护说明
+├── data/                     # 风险词库、版本信息与维护说明
 └── tests/fixtures/           # 扫描测试样例
 ```
 
@@ -60,6 +61,24 @@ skills/sdskill/
 将整个 `skills/sdskill/` 文件夹复制到你使用的 AI 工具的 Skills 目录，或导入发布包中的 `sdskill.skill`。不同工具的目录和导入入口可能不同，以对应版本的说明为准。
 
 在 Kimi Work 等支持斜杠技能命令的 AI 工具中，安装后新开对话输入 `/sdskill` 即可调用；当前会话若未刷新技能索引，请重启或新开对话。
+
+### 版本更新
+
+Skill 会在每次新会话开始时自动检查一次更新（默认每 14 天向 GitHub 请求一次，见 `data/version.json`）。发现新版本时，对话中会提示新版本号和更新方法。手动更新：
+
+```powershell
+# Windows PowerShell：下载最新包并覆盖 Skills 目录中的 sdskill 文件夹
+iwr -Uri "https://github.com/Ford-Z15/sdskill/releases/latest/download/sdskill.skill" -OutFile "$env:TEMP\sdskill.zip"
+Expand-Archive "$env:TEMP\sdskill.zip" -DestinationPath "<你的Skills目录>\sdskill" -Force
+```
+
+```bash
+# macOS / Linux
+curl -L -o /tmp/sdskill.zip https://github.com/Ford-Z15/sdskill/releases/latest/download/sdskill.skill
+unzip -o /tmp/sdskill.zip -d ~/.claude/skills/sdskill
+```
+
+也可以在 [Releases 页面](https://github.com/Ford-Z15/sdskill/releases)手动下载，或 Watch 仓库选 Releases only 接收发版邮件通知。
 
 安装后可直接提出：
 
