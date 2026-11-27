@@ -38,7 +38,7 @@ def main() -> None:
     entry_count = sum(len(ENTRY_RE.findall(path.read_text(encoding="utf-8"))) for path in knowledge_files)
     if len(knowledge_files) != 16:
         errors.append(f"知识文件数量异常：{len(knowledge_files)}")
-    if entry_count != 120:
+    if entry_count != 121:
         errors.append(f"知识条目数量异常：{entry_count}")
 
     for path in SKILL_ROOT.rglob("*.md"):
