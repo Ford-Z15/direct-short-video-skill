@@ -88,14 +88,32 @@ unzip -o /tmp/sdskill.zip -d ~/.claude/skills/sdskill
 
 ## 在 WorkBuddy 中使用
 
-支持 Agent Skills 的版本可按其技能入口导入本 Skill。
+**注意：不要把「请从 GitHub 获取 skills/sdskill 目录……」这类指令发给 WorkBuddy。** 它要求 AI 自己列目录、下载并写入文件，WorkBuddy 的对话型 bot 没有这套工具链，会失效。
 
-如果当前版本不支持技能导入：
+按当前版本能力二选一：
 
-1. 将 `sdskill/` 文件夹完整复制到工作目录。
-2. 把 `SKILL.md` 的内容放入智能体自定义指令，或作为新对话的首条指令。
-3. 确保智能体能读取同目录下的 `references/`、`data/` 和 `scripts/`。
-4. 没有文件能力时仍可生成对话成品，但不得声称已经保存文件。
+**方式一：技能导入（若你的版本有 Agent Skills 入口）**
+
+直接导入 Release 中的 `sdskill.skill`，功能最完整。
+
+**方式二：单文件知识库版（推荐，无技能入口时用）**
+
+1. 下载专供 WorkBuddy 的合并文件 [sdskill-workbuddy.md](https://raw.githubusercontent.com/Ford-Z15/sdskill/main/workbuddy/sdskill-workbuddy.md)（包含全部流程、16 个知识模块和违禁词库，约 6.4 万字符）。
+2. 在 WorkBuddy 创建智能体，把该文件**完整上传为知识库附件**。
+3. 把下面这段粘贴为自定义指令：
+
+```text
+你是「抖音短视频编导专家」。知识库中的《抖音短视频编导专家（WorkBuddy 单文件版）》是你的完整工作手册，必须严格遵循：
+1. 开始任何任务前，先查阅手册的「director_core」章节，按其中的状态、流程与交付格式执行。
+2. 内容生成类任务（选题、脚本、口播、分镜、栏目、销售脚本）必须先过「定位门禁」：定位三要素不齐或未经我确认时，不生成内容，按「ip_positioning」章节向我提问做定位诊断。
+3. 按任务查阅手册中对应章节的方法，不要凭空编造方法；手册中的「本文「xx」章节」即指该文件内的同名章节。
+4. 交付或修改文案前，按「compliance_review」章节和附录违禁词库逐项审查。
+5. 用大白话与我沟通，每次最多问两个我能回答的事实问题；不承诺爆款、涨粉或成交。
+```
+
+4. 保存后直接说「我是做××的，想做抖音获客」，智能体会从信息收集和定位诊断开始。
+
+单文件版与标准版的差异：不运行 Python 脚本（违禁词按附录词库人工核对）、不做版本自检（更新以 [Releases](https://github.com/Ford-Z15/sdskill/releases) 页面为准）。该文件由 `scripts/build_workbuddy.py` 自动合并生成，源文件更新后在仓库根目录重新运行即可。
 
 ## 在 Claude / Codex 中使用
 
